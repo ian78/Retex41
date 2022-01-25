@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        
+        <!-- Bootstrap core CSS -->
+            <link href="{{asset ('css/bootstrap.min.css') }}" type="text/css" rel="stylesheet">
+        <!-- Retex CSS -->
+        <link href="{{asset ('css/retex.css') }}" type="text/css" rel="stylesheet">   
+
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+
+        {% include 'partials/header.html.twig'%}
+                    
+
+        {% block body %}{% endblock %}
+
+        {% include 'partials/footer.html.twig'%}
+
+
+     <!-- SCRIPTS -->
+               
+        <!-- JQuery -->
+        <script src="{{ asset ('js/jquery-3.4.1.min.js') }}"></script>
+        <!-- Bootstrap tooltips -->
+        <script type="text/javascript" src="{{ asset ('js/popper.min.js') }}"></script>
+        <!-- Bootstrap core JavaScript -->
+        <script type="text/javascript" src="{{ asset ('js/bootstrap.min.js') }}"></script>
+        <!-- FontAwesome -->
+        <script src="https://kit.fontawesome.com/2760ac8baf.js" crossorigin="anonymous"></script>
+
+
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,23 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Page Non Trouvée{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+    <div class="row mt-12  align-items-center">
+
+    <img src="{{asset ('/logo/404.jpg')}}" alt="">
+    <h1>Oups ! la page demandée n'existe pas</h1>
+
+    <img src="{{asset ('/logo/insigne41.jpg')}}" style="float:left;width:130px;height:90px;" />
+
+ 
+    
+     
+    <a href="{{path ('homepage')}}" class="btn btn-primary">Retour à l'acceuil</a>
+  
+    </div>
+</div>
+{% endblock %}

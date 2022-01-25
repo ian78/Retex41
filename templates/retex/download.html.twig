@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+
+		<style>
+			body {
+				color: #222;
+				font-family: Arial, "Helvetica Neue", Verdana, sans-serif;
+				font-size: 0.8em;
+
+			}
+
+			H1 {
+				color: grey;
+				font-size: 2em;
+				font-weight: bold;
+				margin: 0;
+				border: 1px black solid;
+				border-bottom: hidden;
+				text-align: center;
+
+
+			}
+
+			H2 {
+				color: grey;
+				font-size: 1.5em;
+				font-weight: bold;
+				margin: 0 0 10px;
+				text-align: center;
+				border: 1px black solid;
+				border-top: hidden;
+			}
+
+			H3 {
+				color: black;
+				font-size: 1em;
+				font-weight: bold;
+				margin: 0 0 5px;
+				text-align: center;
+				background-color: yellow;
+				border: 1px blue solid;
+				box-shadow: 10px 10px 0 black;
+			}
+
+			H4 {
+				color: black;
+				font-size: 1em;
+				font-weight: bold;
+				margin: 0 0 5px;
+				text-align: center;
+				background-color: white;
+				border: 1px black solid;
+				page-break-before: always
+			}
+
+                        .titre-decision{
+                                color: black;
+				font-size: 1em;
+				font-weight: bold;
+				margin: 0 0 5px;
+				text-align: center;
+				background-color: white;
+				border: 1px black solid;   
+                        }
+
+			p {
+
+				text-align: left;
+				font-size: 0.8em;
+				padding: 5 5 5px;
+                                margin: 5 5 5px;
+                                word-wrap: break-word;
+			}
+
+			.objet-mission, {
+				color: black;
+				font-size: 0.95em;
+				width: 49.8%;
+				margin-right: 2px;
+				margin-bottom: 5px;
+				text-align: left;
+				border: 0.5px black solid;
+				float: left;
+
+			}
+
+			.objet_label,
+			.reference_label,
+			.pj_label,
+			.redac_label,
+			.date_label,
+			.lieu_label {
+				color: black;
+				float: left;
+				text-align: left;
+				width: 40%;
+
+			}
+
+			.date_label,
+			.lieu_label {
+				color: black;
+				float: left;
+				text-align: left;
+
+
+			}
+
+			.objet_content,
+			.reference_content,
+			.pj_content,
+			.date_content,
+			.lieu_content {
+
+				text-align: left;
+				padding-left: 50px;
+				margin: 0 25;
+
+			}
+
+			.redac_content, {
+
+				text-align: left;
+				padding-left: 30px;
+				margin: 0 25;
+
+			}
+
+			.date_content,
+			.lieu_content {
+
+				text-align: left;
+				padding-left: 5px;
+
+			}
+
+			.date, {
+				float: right;
+				color: black;
+				font-size: 0.95em;
+				width: 24.8%;
+				text-align: left;
+				border: 0.5px black solid;
+				margin-right: 0.2px;
+
+			}
+			.lieu {
+				float: right;
+				color: black;
+				font-size: 0.95em;
+				width: 24.8%;
+				text-align: left;
+				border: 0.5px black solid;
+
+			}
+			.redac {
+				float: right;
+				color: black;
+				font-size: 0.95em;
+				width: 49.8%;
+				margin: 0;
+				text-align: left;
+				border: 0.5px black solid;
+
+			}
+
+			.reference {
+				float: right;
+				color: black;
+				font-size: 0.95em;
+				width: 100%;
+				margin: 0;
+				text-align: left;
+				border: 0.5px black solid;
+			}
+
+			.pj {
+				color: black;
+				width: 49.8%;
+				margin: 0 0 5px;
+				text-align: left;
+				float: left;
+				font-size: 0.95em;
+				border: 0.5px black solid;
+
+			}
+
+			.encadrement {
+				border: 0.5px black solid;
+                                margin-top: 5px;
+				padding: 5px;
+			}
+
+			.titre1 {
+				border-left: 3px solid red;
+				background-color: lightgrey;
+				font-size: 1em;
+				padding: 5px;
+				margin-left: 2px;
+				margin-right: 2px;
+
+			}
+
+			.titre2 {
+				text-decoration: underline;
+				color: black;
+				margin-left: 80px;
+
+			}
+
+			.positif,
+			.perfectible,
+			.amelioration {
+				color: blue;
+				margin-left: 100px;
+			}
+			.cb {
+				clear: both;
+			}
+
+			.Avis {
+				width: 100%;
+				margin: 100px 0 80px;
+				
+			}
+
+			.decision {
+				width: 100%;
+				margin: 100px 0 80px;
+
+
+			}
+
+			.Avis,
+			.decision tbody {
+				background-color: #f6f6f6;
+				text-align: justify;
+				text-align: top;
+			
+				
+			}
+
+                        .colonne1 {
+                                width:30%; 
+                                border:1px solid black; 
+                        }
+
+                         .colonne2 {
+                                width:70%; 
+                                border:1px solid black; 
+                                text-align:justify;
+                         }
+
+			
+		</style>
+		<title>
+			{% block title %}{% endblock %}
+		</title>
+	</head>
+
+
+	<body>
+
+		<h1>41<sup>e</sup>
+			REGIMENT DE TRANSMISSIONS</h1>
+		<h2>Bureau Opérations Instruction</h2>
+
+		<h3>Compte-rendu de fin de mission</h3><br>
+		<p>N° d'enregistrement L-NACRE xxxxx/COMSIC/41RT/BOI/NP du 01/01/21</p>
+
+		<div class="objet-mission">
+			<div class="objet_label">
+				Objet  :
+			</div>
+			<div class="objet_content">{{retex.objet}}</div>
+
+		</div>
+
+		<div class="lieu">
+			<div class="lieu_label">Lieu :</div>
+			<div class="lieu_content">COMSIC/41RT/DOUAI</div>
+		</div>
+
+		<div class="date">
+			<div class="date_label">Dates :
+			</div>
+			<div class="date_content">10/01/2021</div>
+		</div>
+
+		<div class="cb"></div>
+
+		<div class="pj">
+			<div class="pj_label">Pièces jointes :</div>
+			<div class="pj_content">{{retex.piecejointe}} Lorem ipsum dolus.      </div>
+		</div>
+
+		<div class="redac">
+			<div class="redac_label">Rédacteur :</div>
+			<div class="redac_content">
+				{{retex.author.fullname}}</div>
+		</div>
+
+		<div class="cb"></div>
+
+		<div class="reference">
+
+			<div class="reference_label">Reference(s) :</div>
+			<div class="reference_content">{{retex.reference}}
+				<br></div>
+		</div>
+
+		<div class="cb"></div>
+
+		<div class="encadrement">
+			<div class="titre1">
+				I - GENERALITES</div>
+			<p>{{retex.generalites|raw}}</p>
+
+			<div class="titre1">II - PREPARATION MISSION</div>
+			<p>
+				{% if retex.prepamission == null  %}
+					<p></p>
+				{% else %}
+
+					{{retex.prepamission|raw}}
+				{% endif %}
+			</p>
+
+			<div class="titre2">1. Personnel-Administratif</div>
+
+			{% if retex.II1personnel == null and retex.II1apositif == null and retex.II1bperfectible == null and retex.III2bamelioration == null %}
+				<p>Pas d'observation</p>
+			{% else %}
+				<p>{{retex.II1personnel|raw}}</p>
+			
+
+                                        <div class="positif">
+                                                a. points positifs</div>
+                                        {% if retex.II1apositif == null %}
+                                                <p>Pas d'observation</p>
+                                        {% else %}
+                                                <p>{{retex.II1apositif|raw}}</p>
+
+                                        {% endif %}
+
+                                        <div class="perfectible">
+                                                b. points perfectibles</div>
+                                        {% if retex.II1bperfectible == null %}
+                                                <p>Pas d'observation</p>
+                                        {% else %}
+                                                <p>{{retex.II1bperfectible|raw}}</p>
+                                        {% endif %}
+
+                                        <div class="amelioration">
+                                                c. points améliorations</div>
+                                        {% if retex.III2bamelioration == null %}
+                                                <p>Pas d'observation</p>
+                                        {% else %}
+                                                <p>{{retex.III2bamelioration|raw}}</p>
+                                        {% endif %}
+                        {% endif %}
+
+			<div class="titre2">2. Matériel</div>
+			{% if retex.II2materiel == null and retex.II2apositif == null and retex.II2bperfectible == null and retex.II2cameliration == null %}
+                                <p>Pas d'observation</p>
+                        {% else %}
+                                <p>{{retex.II2materiel|raw}}</p>
+                        
+
+                                                <div class="positif">
+                                                        a. points positifs</div>
+                                                {% if retex.II2apositif == null %}
+                                                        <p></p>
+                                                {% else %}
+                                                        <p>{{retex.II2apositif|raw}}</p>
+                                                {% endif %}
+
+                                                <div class="perfectible">
+                                                        b. points perfectibles</div>
+                                                {% if retex.II2bperfectible == null %}
+                                                        <p></p>
+                                                {% else %}
+                                                        <p>{{retex.II2bperfectible|raw}}</p>
+                                                {% endif %}
+
+                                                <div class="amelioration">
+                                                        c. points améliorations</div>
+                                                {% if retex.II2cameliration == null %}
+                                                <p></p>
+                                                {% else %}
+                                                        <p>{{retex.II2cameliration|raw}}</p>
+                                                {% endif %}
+                        {% endif %}
+
+			<div class="titre2">3. Technique</div>
+			{% if retex.II3technique == null and retex.II3apositif == null and retex.II3bperfectible == null and retex.II3camelioration == null %}
+		                <p>Pas d'observation</p>
+	                {% else %}
+                                                <p >{{retex.II3technique|raw}}</p>
+                                        
+                                                <div class="positif">
+                                                a. points positifs</div>
+                                        {% if retex.II3apositif == null %}
+                                                <p>Pas d'observation</p>
+                                        {% else %}
+                                                <p>{{retex.II3apositif|raw}}</p>
+                                        {% endif %}
+
+                                        <div class="perfectible">
+                                                b. points perfectibles</div>
+                                        {% if retex.II3bperfectible == null %}
+                                                <p>Pas d'observation</p>
+                                        {% else %}
+                                                <p>{{retex.II3bperfectible|raw}}</p>
+                                        {% endif %}
+
+                                        <div class="amelioration">
+                                                c. points améliorations</div>
+                                        {% if retex.II3camelioration == null %}
+                                                <p>Pas d'observation</p>
+                                        {% else %}
+                                                <p>{{retex.II3camelioration|raw}}</p>
+                                        {% endif %}
+                        
+                        {% endif %}
+
+			
+
+			<div class="titre1">III - MISSION</div>
+			<p></p>
+
+			<div class="titre2">1. Personnel-Administratif</div>
+			{% if retex.III1personnel == null and retex.III1apositif == null and retex.III1bperfectible == null and retex.III1camelioration == null %}
+				<p>Pas d'observation</p>
+			{% else %}
+				<p>{{retex.III1personnel|raw}}</p>
+			
+
+                                <div class="positif">
+                                        a. points positifs</div>
+                                {% if retex.III1apositif == null %}
+                                        <p>Pas d'observation</p>
+                                {% else %}
+                                        <p>{{retex.III1apositif|raw}}</p>
+                                {% endif %}
+
+                                <div class="perfectible">
+                                        b. points perfectibles</div>
+                                {% if retex.III1bperfectible == null %}
+                                        <p>Pas d'observation</p>
+                                {% else %}
+                                        <p>{{retex.III1bperfectible|raw}}</p>
+                                {% endif %}
+
+                                <div class="amelioration">
+                                        c. points améliorations</div>
+                                {% if retex.III1camelioration == null %}
+                                        <p>Pas d'observation</p>
+                                {% else %}
+                                        <p>{{retex.III1camelioration|raw}}</p>
+                                {% endif %}
+
+                        {% endif %}
+
+
+			<div class="titre2">2. Matériel</div>
+                        {% if retex.III2materiel == null and retex.III2apositif == null and retex.III2bperfectible == null and retex.III2camelioration == null %}
+				<p>Pas d'observation</p>
+			{% else %}
+				<p>{{retex.III2materiel|raw}}</p>
+			
+			
+                                        <div class="positif">
+                                                a. points positifs</div>
+                                        {% if retex.III2apositif == null %}
+                                                <p>Pas d'observation</p>
+                                        {% else %}
+                                                <p>{{retex.III2apositif|raw}}</p>
+                                        {% endif %}
+
+                                        <div class="perfectible">
+                                                b. points perfectibles</div>
+                                        {% if retex.III2bperfectible == null %}
+                                                <p>Pas d'observation</p>
+                                        {% else %}
+                                                <p>{{retex.III2bperfectible|raw}}</p>
+                                        {% endif %}
+
+                                        <div class="amelioration">
+                                                c. points améliorations</div>
+                                        {% if retex.III2camelioration == null %}
+                                                <p>Pas d'observation</p>
+                                        {% else %}
+                                                <p>{{retex.III2camelioration|raw}}</p>
+                                        {% endif %}
+                        {% endif %}
+
+
+			<div class="titre2">3. Technique</div>
+			{% if retex.III3apositif == null and retex.III3bperfectible == null and retex.III3camelioration == null and retex.III2camelioration == null %}
+				<p>Pas d'observation</p>
+				{% else %}
+			
+                                        <div class="positif">
+                                                a. points positifs</div>
+                                        {% if retex.III3apositif == null %}
+                                                <p>Pas d'observation</p>
+                                        {% else %}        
+                                                <p>{{retex.III3apositif|raw}}</p>
+                                        {% endif %}
+
+                                        <div class="perfectible">
+                                                b. points perfectibles</div>
+                                        {% if retex.III3bperfectible == null %}
+                                                <p>Pas d'observation</p>
+                                        {% else %}
+                                                <p>{{retex.III3bperfectible|raw}}</p>
+                                        {% endif %}
+
+                                        <div class="amelioration">
+                                                c. points améliorations</div>
+                                        {% if retex.III3camelioration == null %}
+                                                <p>Pas d'observation</p>
+                                        {% else %}        
+                                                <p>{{retex.III3camelioration|raw}}</p>
+                                        {% endif %}
+                        {% endif %}
+
+			<div class="titre1">IV - RETOUR MISSION</div>
+			{% if retex.IVretour == null  %}
+
+			{% else %}
+				<p>{{retex.IVretour|raw}}</p>
+			{% endif %}
+
+			<div class="titre2">1. Personnel-Administratif</div>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore tempora optio porro, repudiandae, incidunt inventore, sequi voluptates officiis facilis aliquam ex cumque? Illum fuga suscipit voluptas ipsa alias fugit atque.</p>
+
+			<div class="positif">
+				a. points positifs</div>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt cupiditate adipisci aliquam neque sapiente alias sequi laborum hic. Velit debitis at laudantium quos consectetur ex earum fugit eveniet atque tempore!Ut laborum nostrum quae officiis libero dolorum, perspiciatis illum maiores ipsam repellendus temporibus excepturi asperiores error tempore tenetur veritatis officia culpa natus quisquam nesciunt dignissimos incidunt adipisci quod facilis! Voluptatem?</p>
+
+			<div class="perfectible">
+				b. points perfectibles</div>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt cupiditate adipisci aliquam neque sapiente alias sequi laborum hic. Velit debitis at laudantium quos consectetur ex earum fugit eveniet atque tempore!Ut laborum nostrum quae officiis libero dolorum, perspiciatis illum maiores ipsam repellendus temporibus excepturi asperiores error tempore tenetur veritatis officia culpa natus quisquam nesciunt dignissimos incidunt adipisci quod facilis! Voluptatem?</p>
+
+			<div class="amelioration">
+				c. points améliorations</div>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt cupiditate adipisci aliquam neque sapiente alias sequi laborum hic. Velit debitis at laudantium quos consectetur ex earum fugit eveniet atque tempore!Ut laborum nostrum quae officiis libero dolorum, perspiciatis illum maiores ipsam repellendus temporibus excepturi asperiores error tempore tenetur veritatis officia culpa natus quisquam nesciunt dignissimos incidunt adipisci quod facilis! Voluptatem?</p>
+
+			<div class="titre2">2. Matériel</div>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore tempora optio porro, repudiandae, incidunt inventore, sequi voluptates officiis facilis aliquam ex cumque? Illum fuga suscipit voluptas ipsa alias fugit atque.</p>
+
+			<div class="positif">
+				a. points positifs</div>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt cupiditate adipisci aliquam neque sapiente alias sequi laborum hic. Velit debitis at laudantium quos consectetur ex earum fugit eveniet atque tempore!Ut laborum nostrum quae officiis libero dolorum, perspiciatis illum maiores ipsam repellendus temporibus excepturi asperiores error tempore tenetur veritatis officia culpa natus quisquam nesciunt dignissimos incidunt adipisci quod facilis! Voluptatem?</p>
+
+			<div class="perfectible">
+				b. points perfectibles</div>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt cupiditate adipisci aliquam neque sapiente alias sequi laborum hic. Velit debitis at laudantium quos consectetur ex earum fugit eveniet atque tempore!Ut laborum nostrum quae officiis libero dolorum, perspiciatis illum maiores ipsam repellendus temporibus excepturi asperiores error tempore tenetur veritatis officia culpa natus quisquam nesciunt dignissimos incidunt adipisci quod facilis! Voluptatem?</p>
+
+			<div class="amelioration">
+				c. points améliorations</div>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt cupiditate adipisci aliquam neque sapiente alias sequi laborum hic. Velit debitis at laudantium quos consectetur ex earum fugit eveniet atque tempore!Ut laborum nostrum quae officiis libero dolorum, perspiciatis illum maiores ipsam repellendus temporibus excepturi asperiores error tempore tenetur veritatis officia culpa natus quisquam nesciunt dignissimos incidunt adipisci quod facilis! Voluptatem?</p>
+
+			<div class="titre2">3. Technique</div>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore tempora optio porro, repudiandae, incidunt inventore, sequi voluptates officiis facilis aliquam ex cumque? Illum fuga suscipit voluptas ipsa alias fugit atque.</p>
+
+			<div class="positif">
+				a. points positifs</div>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt cupiditate adipisci aliquam neque sapiente alias sequi laborum hic. Velit debitis at laudantium quos consectetur ex earum fugit eveniet atque tempore!Ut laborum nostrum quae officiis libero dolorum, perspiciatis illum maiores ipsam repellendus temporibus excepturi asperiores error tempore tenetur veritatis officia culpa natus quisquam nesciunt dignissimos incidunt adipisci quod facilis! Voluptatem?</p>
+
+			<div class="perfectible">
+				b. points perfectibles</div>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt cupiditate adipisci aliquam neque sapiente alias sequi laborum hic. Velit debitis at laudantium quos consectetur ex earum fugit eveniet atque tempore!Ut laborum nostrum quae officiis libero dolorum, perspiciatis illum maiores ipsam repellendus temporibus excepturi asperiores error tempore tenetur veritatis officia culpa natus quisquam nesciunt dignissimos incidunt adipisci quod facilis! Voluptatem?</p>
+
+			<div class="amelioration">
+				c. points améliorations</div>
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt cupiditate adipisci aliquam neque sapiente alias sequi laborum hic. Velit debitis at laudantium quos consectetur ex earum fugit eveniet atque tempore!Ut laborum nostrum quae officiis libero dolorum, perspiciatis illum maiores ipsam repellendus temporibus excepturi asperiores error tempore tenetur veritatis officia culpa natus quisquam nesciunt dignissimos incidunt adipisci quod facilis! Voluptatem?</p>
+
+		</div>
+		
+		<div class="cb"></div>
+                <h4>                    
+			Avis hiérarchique
+		</h4>
+		<div class="cb"></div>
+			
+		<table class="Avis">
+			
+			<thead></thead>
+			{% if retex.comments | length > 0 %}
+			{% for comment in retex.comments %}
+			<tbody>
+
+				<tr>
+					<td class="colonne1">Avis de :<br>
+						{{comment.author.fullname}}</td>
+					<td class="colonne2">{{comment.content}}</td>
+				</tr>
+
+				
+			</tbody>
+		
+			{% endfor %}
+			{% endif %}
+		</table>
+		<div class="cb"></div>
+		<div class="titre-decision">
+			Decision hiérarchique
+		</div>
+		<div class="cb"></div>
+
+		<table class="decision">
+			<thead></thead>
+			<tbody>
+
+				<tr>
+					<td class="colonne1">decision du chef BOI :
+						<br>
+						LCL MAIRE</td>
+					<td class="colonne2">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veritatis, excepturi maxime. Mollitia corporis quisquam impedit quaerat illum reprehenderit beatae, eos laboriosam maxime quia rem assumenda expedita? Ad fugit repellat impedit?</td>
+				</tr>
+
+			</tbody>
+		</table>
+
+	</body>
+
+</html>

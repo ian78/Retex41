@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Page Non Trouvée{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+    <h1>Alors ?? où voulez-vous aller comme ça !</h1>
+    <div class="row mt-12  align-items-center">
+    <div class="col-3">
+    <img src="{{asset ('/logo/interdit.jpg')}}" style="float:center;width:250px;height:300px;" alt="">
+    </div>
+    <div class="col-6">
+    <div class="alert alert-danger">
+    <p class=""> Vous n'avez pas le droit d'accéder à cette ressource</p>
+    </div>
+    </div>
+    <div class="container mt-6">
+    <div class="row mt-12  align-items-center">
+
+    <a href="{{path ('homepage')}}" class="btn btn-primary">Retour à l'acceuil</a>
+    </div>
+    </div>
+     
+    
+    
+    </div>
+     </div>
+
+{% endblock %}

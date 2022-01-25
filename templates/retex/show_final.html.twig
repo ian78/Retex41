@@ -1,0 +1,743 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Retex Technique On Line !
+{% endblock %}
+
+
+{% block body %}
+<div class="container-fluid">
+
+	<div class="container-fluid align-center mt-6">
+		<div class="row mt-12">
+			<div class="col-6"></div>
+			<h6 class=""></h6>
+			<div class="col-6"></div>
+		</div>
+		<div class="row mt-12  align-items-center">
+
+			<div class="col-1 ">
+				<img src="{{asset ('/logo/insigne41.jpg')}}" style="float:left;width:130px;height:90px;"/>
+			</div>
+
+
+			<div class="col-md-10" style="text-align:center">
+				<h1>
+					<strong>
+						<upper>41<sup>e</sup>
+							REGIMENT DE TRANSMISSIONS</upper>
+					</strong>
+				</h1><br>
+				<h3>
+					<upper>Bureau Operations Instruction</upper>
+				</h3><br>
+			</div>
+
+			<div class="col-1 " style="align:right">
+				<div class="col">
+					<h6 class="">
+						<a href="{{ path ('user_final' , {'slug' : retex.author.slug }) }}">
+
+							{% if not retex.author.Filename %}
+								<button class="btn-secundary">
+									<i class="fas fa-user-tie"></i>
+								</button>
+								<br>
+								<span class="badge badge-primary">{{retex.author.fullname}}</span>
+							{% else %}
+								<img src="{{ asset('images/users/' ~ retex.author.Filename) }}" class="avatar avatar-medium" alt=" Avatar de {{retex.author.fullname}} " class="src">
+							</h6>
+
+						{% endif %}
+					</a>
+					<span class="badge badge-primary">Publication(s)  :
+						{{retex.author.retexes | length }}</span>
+				</div>
+
+			</div>
+
+
+		</div>
+	</div>
+
+
+	<div class="container mt-6">
+
+		<table class="table table my-3">
+			<tbody>
+				<tr class="table-info">
+
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<th scope="row">Bureau Opérations Instruction
+					</th>
+					<td></td>
+
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td></td>
+
+					<td align="right"></td>
+					<td align="right">
+						<a href="{{ path ('retex_data_download', {'slug':retex.slug})}}"
+							 <i class= "fas fa-file-pdf" /i> Pdf </a></td> 
+					<td align="right"></td>
+   
+					<td align="right">
+						<a href="{{ path ('categorie_show', {'slug':categorie.slug})}}"
+					<i class="fas fa-door-open"/i>Retour</a></td>
+						
+			</tbody>
+								
+		</table>
+
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</div>
+
+
+		<div class="myDiv">
+			<h3>Compte-rendu de fin de mission</h3>
+			<p>N° d'enregistrement L-NACRE xxxxx/COMSIC/41RT/BOI/NP du 01/01/21</p>
+		</div>
+
+		<div class="row">
+			<div class="col-6"></div>
+			<h6 class=""></h6>
+			<div class="col-6"></div>
+		</div>
+
+		<div class="row">
+			<div class="col-6">
+				<div style="border: 2px solid black">
+					<h6 class="">
+						<strong>
+							<u>Objet  de la mission:</u>
+						</strong>
+						{{retex.objet}}</h6>
+				</div>
+			</div>
+
+			<div class="col-6">
+				<div style="border: 2px solid black">
+					<h6 class="align-left">
+						<strong>
+							<u>Référence(s)</u>
+						</strong>
+						:
+						{{retex.reference}}</h6>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-6"></div>
+			<h6 class=""></h6>
+			<div class="col-6"></div>
+		</div>
+
+		<div class="row mt-6">
+			<div class="col-6">
+				<div style="border: 2px solid black">
+					<h6 class="align-left">
+						<strong>
+							<u>Pièces jointes :</u>
+						</strong>
+						<a href="{{ asset('pj/' ~ retex.piecejointe) }}">{{retex.piecejointe}}</a>
+					</h6>
+				</div>
+			</div>
+			<div class="col-6">
+				<div style="border: 2px solid black">
+
+					<h6 class="align-left">
+						<strong>
+							<u>Rédacteur</u>
+							:
+						</strong>
+						<a href="{{ path ('user_final' , {'slug' : retex.author.slug }) }}">{{retex.author.fullname}}
+						</a>
+					</h6>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row mt-4"></div>
+
+		<div class="container">
+			<div class="row mt-6">
+				<strong>
+					<h4>
+						<u>TITRE</u>
+						:
+						{{retex.titre}}</h4>
+				</strong>
+			</div>
+		</div>
+
+		<div class="row mt-4"></div>
+
+
+		<button type="button" class="accordion">I - GENERALITES :</button>
+		<div class="panel">
+			<p class="">
+				{{retex.generalites|raw}}</p>
+		</div>
+
+		<button type="button" class="accordion">II - PREPARATION MISSION :
+		</button>
+		<div class="panel">
+			{% if retex.prepamission == null  %}
+				{% else %}
+					<p class="textes">
+						{{retex.prepamission|raw}}</p>
+			{% endif %}
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col-4">
+					<h4 class " ">
+						<strong>
+							<u>1 . Personnnel - Administratif</u>
+						</strong>
+					</h4>
+				</div>
+			</div>
+			{% if retex.II1personnel == null and retex.II1apositif == null and retex.II1bperfectible == null and retex.III2bamelioration == null %}
+				<p class="">Pas d'observation</p>
+			{% else %}
+				<p class="">
+					{{retex.II1personnel|raw}}</p>
+			{% endif %}
+
+
+			{% if retex.II1apositif == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:blue">
+							<u>a. Points positifs :</u>
+						</h5>
+					</div>
+
+					<p class="">{{retex.II1apositif|raw}}</p>
+
+			{% endif %}
+
+			{% if retex.II1bperfectible == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:orange">
+							<u>b. Points perfectibles :</u>
+						</h5>
+					</div>
+
+					<p class="">
+						{{retex.II1bperfectible|raw}}</p>
+			{% endif %}
+
+			{% if retex.III2bamelioration == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:green">
+							<u>c. Points d'amélioration :</u>
+						</h5>
+					</div>
+					<p class="">
+						{{retex.III2bamelioration|raw}}</p>
+			{% endif %}
+
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col-3">
+					<h4 class " ">
+						<strong>
+							<u>2 . Matériel</u>
+						</strong>
+					</h4>
+				</div>
+			</div>
+			{% if retex.II2materiel == null and retex.II2apositif == null and retex.II2bperfectible == null and retex.II2cameliration == null %}
+				<p class="">Pas d'observation</p>
+			{% else %}
+				<p class="">
+					{{retex.II2materiel|raw}}</p>
+			{% endif %}
+
+			{% if retex.II2apositif == null %}
+				{% else %}
+
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:blue">
+							<u>a. Points positifs :</u>
+						</h5>
+					</div>
+					<p class="">
+						{{retex.II2apositif|raw}}</p>
+			{% endif %}
+
+			{% if retex.II2bperfectible == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:orange">
+							<u>b. Points perfectibles :</u>
+						</h5>
+					</div>
+
+					<p class="">{{retex.II2bperfectible|raw}}</p>
+			{% endif %}
+
+			{% if retex.II2cameliration == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:green">
+							<u>c. Points d'amélioration :</u>
+						</h5>
+					</div>
+
+					<p class="">{{retex.II2cameliration|raw}}</p>
+			{% endif %}
+
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col-3">
+					<h4 class " ">
+						<strong>
+							<u>3 . Technique</u>
+						</strong>
+					</h4>
+				</div>
+			</div>
+
+			{% if retex.II3technique == null and retex.II3apositif == null and retex.II3bperfectible == null and retex.II3camelioration == null %}
+				<p class="">Pas d'observation</p>
+			{% else %}
+				<p class="">{{retex.II3technique|raw}}</p>
+			{% endif %}
+
+
+			{% if retex.II3apositif == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:blue">
+							<u>a. Points positifs :</u>
+						</h5>
+					</div>
+					<p class="">{{retex.II3apositif|raw}}</p>
+			{% endif %}
+
+			{% if retex.II3bperfectible == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:orange">
+							<u>b. Points perfectibles :</u>
+						</h5>
+					</div>
+					<p class="">{{retex.II3bperfectible|raw}}</p>
+			{% endif %}
+
+			{% if retex.II3camelioration == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:green">
+							<u>c. Points d'amélioration :</u>
+						</h5>
+					</div>
+
+					<p class="">{{retex.II3camelioration|raw}}</p>
+			{% endif %}
+
+		</div>
+
+		<button type="button" class="accordion">III - MISSION</button>
+		<div class="panel">
+			<p class="textes"></p>
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col-4">
+					<h4 class " ">
+						<strong>
+							<u>1 . Personnnel - Administratif</u>
+						</strong>
+					</h4>
+				</div>
+			</div>
+			{% if retex.III1personnel == null and retex.III1apositif == null and retex.III1bperfectible == null and retex.III1camelioration == null %}
+				<p class="">Pas d'observation</p>
+			{% else %}
+				<p class="">{{retex.III1personnel|raw}}</p>
+			{% endif %}
+
+			{% if retex.III1apositif == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:blue">
+							<u>a. Points positifs :</u>
+						</h5>
+					</div>
+					<p class="">{{retex.III1apositif|raw}}</p>
+			{% endif %}
+
+			{% if retex.III1bperfectible == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:orange">
+							<u>b. Points perfectibles :</u>
+						</h5>
+					</div>
+					<p class="">{{retex.III1bperfectible|raw}}</p>
+			{% endif %}
+
+			{% if retex.III1camelioration == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:green">
+							<u>c. Points d'amélioration :</u>
+						</h5>
+					</div>
+
+					<p class="">{{retex.III1camelioration|raw}}</p>
+			{% endif %}
+
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col-3">
+					<h4 class " ">
+						<strong>
+							<u>2 . Matériel</u>
+						</strong>
+					</h4>
+				</div>
+			</div>
+			{% if retex.III2materiel == null and retex.III2apositif == null and retex.III2bperfectible == null and retex.III2camelioration == null %}
+				<p class="">Pas d'observation</p>
+			{% else %}
+				<p class="">{{retex.III2materiel|raw}}</p>
+			{% endif %}
+
+			{% if retex.III2apositif == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:blue">
+							<u>a. Points positifs :</u>
+						</h5>
+					</div>
+
+					<p class="">{{retex.III2apositif|raw}}</p>
+			{% endif %}
+
+			{% if retex.III2bperfectible == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:orange">
+							<u>b. Points perfectibles :</u>
+						</h5>
+					</div>
+
+					<p class="">{{retex.III2bperfectible|raw}}</p>
+			{% endif %}
+
+			{% if retex.III2camelioration == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:green">
+							<u>c. Points d'amélioration :</u>
+						</h5>
+					</div>
+					<p class="">{{retex.III2camelioration|raw}}</p>
+			{% endif %}
+
+
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col-3">
+					<h4 class " ">
+						<strong>
+							<u>3 . Technique</u>
+						</strong>
+					</h4>
+				</div>
+			</div>
+			{% if retex.III3apositif == null and retex.III3bperfectible == null and retex.III3camelioration == null and retex.III2camelioration == null %}
+				<p class="">Pas d'observation</p>
+				{% else %}
+			{% endif %}
+
+			{% if retex.III3apositif == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:blue">
+							<u>a. Points positifs :</u>
+						</h5>
+					</div>
+
+					<p class="">{{retex.III3apositif|raw}}</p>
+			{% endif %}
+
+			{% if retex.III3bperfectible == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:orange">
+							<u>b. Points perfectibles :</u>
+						</h5>
+					</div>
+
+					<p class="">{{retex.III3bperfectible|raw}}</p>
+			{% endif %}
+
+			{% if retex.III3camelioration == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:green">
+							<u>c. Points d'amélioration :</u>
+						</h5>
+					</div>
+
+					<p class="">{{retex.III3camelioration|raw}}</p>
+			{% endif %}
+
+		</div>
+
+		<button type="button" class="accordion">IV - RETOUR MISSION</button>
+		<div class="panel">
+
+			{% if retex.IVretour == null  %}
+
+				{% else %}
+					<p class="textes">{{retex.IVretour|raw}}</p>
+			{% endif %}
+
+
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col-4">
+					<h4 class " ">
+						<strong>
+							<u>1 . Personnnel - Administratif</u>
+						</strong>
+					</h4>
+				</div>
+			</div>
+
+
+			{% if retex.IV1personnel == null and retex.IV1apositif == null and retex.IV1bperfectible == null and retex.IV1camelioration == null %}
+				<p class="">Pas d'observation</p>
+			{% else %}
+				<p class="">{{retex.IV1personnel|raw}}</p>
+			{% endif %}
+
+
+			{% if retex.IV1apositif == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:blue">
+							<u>a. Points positifs :</u>
+						</h5>
+					</div>
+					<p class="">{{retex.IV1apositif|raw}}</p>
+			{% endif %}
+
+			{% if retex.IV1bperfectible == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:orange">
+							<u>b. Points perfectibles :</u>
+						</h5>
+					</div>
+					<p class="">{{retex.IV1bperfectible|raw}}</p>
+			{% endif %}
+
+			{% if retex.IV1camelioration == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:green">
+							<u>c. Points d'amélioration :</u>
+						</h5>
+					</div>
+					<p class="">{{retex.IV1camelioration|raw}}</p>
+			{% endif %}
+
+
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col-3">
+					<h4 class " ">
+						<strong>
+							<u>2 . Matériel</u>
+						</strong>
+					</h4>
+				</div>
+			</div>
+			{% if retex.IV2materiel == null and retex.IV2apositif == null and retex.IV2bperfectible == null and retex.IV2camelioration == null %}
+				<p class="">Pas d'observation</p>
+			{% else %}
+				<p class="">{{retex.IV2materiel|raw}}</p>
+			{% endif %}
+
+
+			{% if retex.IV2apositif == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:blue">
+							<u>a. Points positifs :</u>
+						</h5>
+					</div>
+					<p class="">{{retex.IV2apositif|raw}}</p>
+			{% endif %}
+
+			{% if retex.IV2bperfectible == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:orange">
+							<u>b. Points perfectibles :</u>
+						</h5>
+					</div>
+					<p class="">{{retex.IV2bperfectible|raw}}</p>
+			{% endif %}
+
+			{% if retex.IV2camelioration == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:green">
+							<u>c. Points d'amélioration :</u>
+						</h5>
+					</div>
+					<p class="">{{retex.IV2camelioration|raw}}</p>
+			{% endif %}
+
+			<div class="row">
+				<div class="col-1"></div>
+				<div class="col-3">
+					<h4 class " ">
+						<strong>
+							<u>3 . Technique</u>
+						</strong>
+					</h4>
+				</div>
+			</div>
+
+			{% if retex.IV3technique == null and retex.IV3apositif == null and retex.IV3bperfectible == null and retex.IV3camelioration == null %}
+
+				<p class="">Pas d'oservation</p>
+			{% else %}
+				<p class="">{{retex.IV3technique|raw}}
+				</p>
+			{% endif %}
+
+			{% if retex.IV3apositif == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:blue">
+							<u>a. Points positifs :</u>
+						</h5>
+					</div>
+
+					<p class="">{{retex.IV3apositif|raw}}</p>
+			{% endif %}
+
+			{% if retex.IV3bperfectible == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:orange">
+							<u>b. Points perfectibles :</u>
+						</h5>
+					</div>
+
+					<p class="">{{retex.IV3bperfectible|raw}}</p>
+			{% endif %}
+
+			{% if retex.IV3bperfectible == null %}
+				{% else %}
+					<div class="row">
+						<div class="col-2"></div>
+						<h5 class="row mt-3" style="color:green">
+							<u>c. Points d'amélioration :</u>
+						</h5>
+					</div>
+					<p class="">{{retex.IV3camelioration|raw}}</p>
+			{% endif %}
+		</div>
+
+		<hr>
+
+
+		<div class="alert alert-light">
+
+			<div class="col-10">
+				<h4 class="mb-3">Avis hiérarchiques</h4>
+
+			</div>
+
+
+		</div>
+		{% if retex.comments | length > 0 %}
+			{% for comment in retex.comments %}
+
+				<div class="bg-light rounded mb-3 py-3 px-3">
+					<div class="row">
+						<div class="col-1">
+						
+						</div>
+
+						<div class="col-2">
+							<strong>Avis de :
+								{{comment.author.fullname}}</strong>
+							<br>
+							<strong>
+								publié le :
+								{{comment.createdAt | date("d/m/Y")}}</strong>
+						</div>
+
+						<div class="col-9">
+							<blockquote>
+								{{comment.content}}
+							</blockquote>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>{% endfor %}{% else %}{% endif %}{% endblock %}{% block javascripts %}<script src="/js/retex.js"></script>{% endblock %}

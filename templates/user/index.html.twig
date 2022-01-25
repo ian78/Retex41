@@ -1,0 +1,306 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page de {{user.fullName}}{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-3 text-center">
+                   {% if not user.Filename %}
+                        
+                         <td class="text-center"> <button class="btn-secundary"><i class="fas fa-user-tie"> </i></button></td>
+                         
+                          {% else %}
+                         
+                         <td class="text-center"> 
+                         <img src="{{  asset('images/users/' ~ user.Filename) }}" 
+                         class= "avatar avatar-medium"
+                         alt=" Avatar de {{user.fullname}} " class="src"> </h6></td>
+                                
+                          {% endif %}
+                    
+                
+            </div>
+            <div class="col-9">
+            <h1>{{user.fullName}}</h1>
+            
+            {% if user is same as(app.user) %}
+
+                <div class="mt-3">
+                <a href="{{ path ('account_profile') }}" class="btn btn-primary mr-2 mb-2">modifier mes informations</a>
+                <a href="{{ path ('account_password') }}" class="btn btn-primary mb-2">modifiez votre mot de passe</a>
+               
+                </div>
+
+            {% endif %}
+            
+
+            </div>
+        </div>
+
+        {{user.description | raw}}
+
+        
+
+       
+        
+       {% if decision | length > 0 %}
+       <hr>
+          <h3>Compte rendu pour décision !</h3>
+                <p class=""> Vous avez {{ decision | length }} compte rendu pour lesquels vous devez apposer votre décision</p>
+            
+                   <table class="table table-hover">
+                <thead>
+                  
+                   <th>Titre</th>
+                   <th class="text-left">Catégorie</th>
+                   <th class="text-left">Rédacteur</th>
+                   <th class="text-center">Envoyé le</th> 
+                   <th class="text-center">Actions</th>
+                    
+                </thead>
+                <tbody>
+                     {% for decision in decision %}  
+                <tr>
+                    
+                    <td>{{ decision.retex.titre}}</td>
+                    
+                    <td class="text-left">{{decision.retex.categorie.name}}</td>
+                    
+                    <td class="text-left">{{decision.retex.author.fullname}}</td>
+               
+                    <td class="text-center">{{ decision.DateSubmit | date("d-m-Y")}}</td>
+
+                                    
+                    <td class="text-center">
+
+                        <a href={{ path ('retex_show', {'slug':decision.retex.slug})}} 
+                                class="btn btn-primary" 
+                                onMouseOver="displayDivInfo('Editer');" 
+                                onMouseOut="displayDivInfo()" >
+                                <i class="fas fa-edit"></i>
+                        </a>
+                         
+                       
+                        <a href={{path('publication', {'retex_id': decision.retex.id , 'decision_id':decision.id })}} 
+                                 class="btn btn-info" 
+                                 onMouseOver="displayDivInfo('Publié le document ');" 
+                                 onMouseOut="displayDivInfo()" >
+                                 <i class="fas fa-upload"></i>
+                        </a>
+                          
+                       
+                    </td> 
+                  
+                </tr>
+                
+            </div>
+
+                {% endfor %}     
+                </tbody>
+            </table>
+
+        {% endif %}
+      
+       {% if validation | length > 0 %}
+       <hr>
+          <h3>Compte rendu pour avis !</h3>
+                <p class=""> Vous avez {{ validation | length }} compte rendu pour lesquels vous devez apposer un avis</p>
+            
+                   <table class="table table-hover">
+                <thead>
+                  
+                   <th>Titre</th>
+                   <th class="text-left">Catégorie</th>
+                   <th class="text-left">Rédacteur</th>
+                   <th class="text-center">Envoyé le</th> 
+                   <th class="text-center">Avis</th>
+                   <th class="text-center">Transmettre</th>
+                    
+                </thead>
+                <tbody>
+                     {% for validation in validation %}  
+                <tr>
+                    
+                    <td>{{ validation.retex.titre}}</td>
+                    
+                    <td class="text-left">{{validation.retex.categorie.name}}</td>
+                    
+                    <td class="text-left">{{validation.retex.author.fullname}}</td>
+               
+                    <td class="text-center">{{ validation.DateSubmit | date("d-m-Y")}}</td>
+
+                                    
+                    <td class="text-center">
+
+                        <a href={{ path ('retex_show', {'slug':validation.retex.slug})}} 
+                                class="btn btn-primary" onMouseOver="displayDivInfo('Editer');" 
+                                onMouseOut="displayDivInfo()" ><i class="fas fa-edit"></i></a>
+                         
+                       
+                    </td> 
+
+                    <td class="text-center">
+
+                        <a href={{ path ('decision', {'retex_id':validation.retex.id , 'validation_id' : validation.id})}} 
+                                            class="btn btn-info" onMouseOver="displayDivInfo('Transmettre pour décision ');" 
+                                          onMouseOut="displayDivInfo()" ><i class="fas fa-paper-plane"></i></a>
+                          
+                       
+                    </td> 
+                  
+                </tr>
+                
+            </div>
+
+                {% endfor %}     
+                </tbody>
+            </table>
+
+        {% endif %}
+      
+
+        {% if user.retexes | length >0 %}
+        <hr>
+
+        <h3>Vos compte-rendus !</h3>
+             <div class="row">
+               
+
+                   <table class="table table-hover">
+                <thead>
+                  
+                   <th>Titre</th>
+                   <th class="text-left">Catégorie</th>
+                   <th class="text-center">Date de Création</th> 
+                   
+                   <th class="text-center">Actions</th>
+                    
+                </thead>
+                <tbody>
+                     {% for retexs in retex %}   
+                <tr>
+                    
+                    <td>{{retexs.titre}}</td>
+                    
+                    <td class="text-left">{{retexs.categorie.name}}</td>
+               
+                    <td class="text-center">{{retexs.createdAt | date("d-m-Y")}}</td>
+                   
+                 
+                        
+                    </td>
+                                    
+                    <td class="text-center">
+
+                        <a href={{ path ('retex_show', {'slug':retexs.slug})}} 
+                                class="btn btn-primary" onMouseOver="displayDivInfo('Editer');" 
+                                onMouseOut="displayDivInfo()" ><i class="fas fa-edit"></i></a>
+                         
+                        {% if retexs.published == true %}
+                        
+                            <a href="#" 
+                                    class="btn btn-success" 
+                                    onMouseOver="displayDivInfo('Document en ligne');" 
+                                    onMouseOut="displayDivInfo()" >
+                                    <i class="fas fa-broadcast-tower"></i>
+                            </a>
+                       
+                 
+                            
+                                 {% elseif retexs.standby == true %}
+                                
+                                        <a href={{ path ('validation_show' , {'retex_id' :retexs.id} )}} 
+                                            class="btn btn-warning" 
+                                            onMouseOver="displayDivInfo('Votre avis est en cours de rédaction');" 
+                                            onMouseOut="displayDivInfo()" >
+                                            <i class="fas fa-hourglass-half"></i>
+                                        </a>
+                                
+                        {% else %}
+                                        
+                                    
+                                                                  
+                                    <a href={{ path ('validation', {'retex_id':retexs.id})}}  
+                                            class="btn btn-info"
+                                            onMouseOver="displayDivInfo('Transmettre pour avis');" 
+                                            onMouseOut="displayDivInfo()" >
+                                            <i class="fas fa-paper-plane"></i>
+                                </a>
+                          
+                              
+                        {% endif %}
+
+                       
+                    </td> 
+                  
+                </tr>
+                
+            </div>
+
+                {% endfor %}     
+                </tbody>
+            </table>            
+                     {# display navigation #}
+                                <div class="container-fluid">
+                                    <div class="row-fluid">
+                                        <div class="centering text-center">
+                                                
+                                                <div>
+                                                <ul class="pagination pagination-sm">
+                                                {{ knp_pagination_render(retex) }}
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>  
+              
+            </div>
+
+
+        {% else %}
+            
+            <div class="alert alert-dismissible alert-warning">
+                    
+                    <h6 class="alert-heading"></h6>
+                    <p class="mb-0"> Vous n'avez jamais rédigé de compte rendu en votre nom !</p>
+                    </div>
+
+            
+        
+        {% endif %}
+         
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+<script>
+function displayDivInfo(text){
+    if(text){
+        //Détection du navigateur
+        is_ie = (navigator.userAgent.toLowerCase().indexOf("msie") != -1) && (navigator.userAgent.toLowerCase().indexOf("opera") == -1);
+         
+        //Création d'une div provisoire
+        var divInfo = document.createElement('div');
+        divInfo.style.position = 'absolute';
+        document.onmousemove = function(e){
+            x = (!is_ie ? e.pageX-window.pageXOffset : event.x+document.body.scrollLeft);
+            y = (!is_ie ? e.pageY-window.pageYOffset : event.y+document.body.scrollTop);
+            divInfo.style.left = x+15+'px';
+            divInfo.style.top = y+15+'px';
+        }
+        divInfo.id = 'divInfo';
+        divInfo.innerHTML = text;
+        document.body.appendChild(divInfo);
+    }
+    else{
+        document.onmousemove = '';
+        document.body.removeChild(document.getElementById('divInfo'));
+    }
+}
+</script>
+
+
+
+
+{% endblock %}

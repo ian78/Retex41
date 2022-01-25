@@ -1,0 +1,375 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Compte rendu {% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+
+<h1>Rédigez votre compte rendu de fin de mission</h1>
+
+
+
+        {{ form_start (form, { attr: { novalidate: 'novalidate' }}) }}
+
+       
+
+<div class="row">
+            <div class="col-6"></div>
+            <h6 class=""></h6>
+            <div class="col-6"></div>
+</div>
+   
+ <div class="row">
+          <div class="col-6">
+              <div style="border: 2px solid black">
+                 <h6 class=""><strong><u>Objet  de la mission:</u></strong> : {{form_row(form.objet)}}</h6>
+              </div>
+          </div>
+
+          <div class="col-6">
+              <div style="border: 2px solid black">
+                  <h6 class="align-left"> <strong><u>Référence(s)</u></strong> : {{form_row(form.reference)}} </h6>
+            </div>
+          </div>
+</div>
+<div class="row">
+            <div class="col-6"></div>
+            <h6 class=""></h6>
+            <div class="col-6"></div>
+</div>
+
+ <div class="row mt-6">
+          <div class="col-6">
+              <div style="border: 2px solid black">
+                 <h6 class="">  <strong><u>Rédacteur</u> :</strong>{{retex.author.fullname}}</h6>
+              </div>
+          </div>
+
+          <div class="col-6">
+              <div style="border: 2px solid black">
+                  <h6 class="align-left"><strong><u>Pièces jointes :</u></strong>  {{form_row (form.piecejointe)}}</h6>
+            </div>
+          </div>
+</div>
+
+<div class="container">
+      <div class="row mt-3"><strong><h4><u></u></h4></strong></div>
+      
+          <h4>{{form_row(form.categorie)}}</h4>
+      
+</div>
+
+<div class="container">
+      <div class="row mt-3"><strong><h4><u>TITRE</u> :</h4></strong></div>
+          <h4>{{form_row(form.titre)}}</h4>
+      
+</div>
+<button type="button" class="accordion">I - GENERALITES :</button> 
+<div class="panel">
+  <p class=""> {{form_row(form.generalites)}}</p>
+</div>
+
+<button type="button" class="accordion">II - PREPARATION MISSION : </button>
+<div class="panel">
+  <p class="textes"> {{form_row(form.prepamission)}}</p>
+        <div class="row">
+        <div class="col-1"></div>
+        <div class="col-4"><h4 class " "><strong><u>1 . Personnnel - Administratif</u></strong> </h4></div>
+        </div>    
+                <p class=""> {{form_row(form.II1personnel)}}</p>
+  
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3"  style="color:blue"><u>a. Points positifs :</u></h5>
+                </div>
+                
+                <p class="">{{form_row(form.II1apositif)}}</p>
+               
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3" style="color:orange"><u>b. Points perfectibles :</u></h5>
+                </div>
+                
+                <p class=""> {{form_row(form.II1bperfectible)}}</p>
+                
+
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3" style="color:green"><u>c. Points d'amélioration :</u></h5>
+                </div>
+                
+                <p class=""> {{form_row(form.III2bamelioration)}}</p>
+                
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-3"><h4 class " "><strong><u>2 . Matériel</u></strong> </h4></div>
+   </div>    
+       <p class="">  {{form_row(form.II2materiel)}}</p>
+  
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3"  style="color:blue"><u>a. Points positifs :</u></h5>
+                </div>
+                
+                <p class=""> {{form_row(form.II2apositif)}}</p>
+                
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3" style="color:orange"><u>b. Points perfectibles :</u></h5>
+                </div>
+                
+                <p class="">{{form_row(form.II2bperfectible)}}</p>
+                
+
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3" style="color:green"><u>c. Points d'amélioration :</u></h5>
+                </div>
+                
+                <p class="">{{form_row(form.II2cameliration)}}</p>
+              
+
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-3"><h4 class " "><strong><u>3 . Technique</u></strong> </h4></div>
+   </div>    
+       
+       <p class="">{{form_row(form.II3technique)}}</p>
+  
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3"  style="color:blue"><u>a. Points positifs :</u></h5>
+                </div>
+                
+                <p class="">{{form_row(form.II3apositif)}}</p>
+                                
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3" style="color:orange"><u>b. Points perfectibles :</u></h5>
+                </div>
+               
+                <p class="">{{form_row(form.II3bperfectible)}}</p>
+                
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3" style="color:green"><u>c. Points d'amélioration :</u></h5>
+                </div>
+                
+                <p class="">{{form_row(form.II3camelioration)}}</p>
+                
+
+</div>
+
+<button type="button" class="accordion">III - MISSION</button>
+<div class="panel">
+    <p class="textes"></p>
+        <div class="row">
+        <div class="col-1"></div>
+        <div class="col-4"><h4 class " "><strong><u>1 . Personnnel - Administratif</u></strong> </h4></div>
+        </div>    
+       
+        <p class="">{{form_row(form.III1personnel)}}</p>
+  
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3"  style="color:blue"><u>a. Points positifs :</u></h5>
+                </div>
+                
+                <p class="">{{form_row(form.III1apositif)}}</p>
+                
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3" style="color:orange"><u>b. Points perfectibles :</u></h5>
+                </div>
+                
+                <p class="">{{form_row(form.III1bperfectible)}}</p>                
+                
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="mt-3" style="color:green"><u>c. Points d'amélioration :</u></h5>
+                </div>
+
+                <p class="">{{form_row(form.III1camelioration)}}</p>
+                
+
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-3"><h4 class " "><strong><u>2 . Matériel</u></strong> </h4></div>
+   </div>    
+       
+       <p class="">{{form_row(form.III2materiel)}}</p>
+  
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3"  style="color:blue"><u>a. Points positifs :</u></h5>
+                </div>
+                
+                <p class="">{{form_row(form.III2apositif)}}</p>
+                
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3" style="color:orange"><u>b. Points perfectibles :</u></h5>
+                </div>
+                
+                <p class="">{{form_row(form.III2bperfectible)}}</p>
+                
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3" style="color:green"><u>c. Points d'amélioration :</u></h5>
+                </div>
+                
+                <p class="">{{form_row(form.III2camelioration)}}</p>
+                
+
+
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-3"><h4 class " "><strong><u>3 . Technique</u></strong> </h4></div>
+</div>    
+       <p class=""> </p>
+  
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3"  style="color:blue"><u>a. Points positifs :</u></h5>
+                </div>
+                
+                <p class="">{{form_row(form.III3apositif)}}</p>
+                
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3" style="color:orange"><u>b. Points perfectibles :</u></h5>
+                </div>
+
+                <p class="">{{form_row(form.III3bperfectible)}}</p></p>              
+
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3" style="color:green"><u>c. Points d'amélioration :</u></h5>
+                </div>
+                
+                <p class="">{{form_row(form.III3camelioration)}}</p></p>
+                
+</div>
+
+<button type="button" class="accordion">IV - RETOUR MISSION</button>
+   <div class="panel">
+      <p class="textes">{{form_row(form.IVretour)}}</p>
+  
+                <div class="row">
+                <div class="col-1"></div>
+                <div class="col-4"><h4 class " "><strong><u>1 . Personnnel - Administratif</u></strong> </h4></div>
+                </div>    
+        
+                <p class="">{{form_row(form.IV1personnel)}}</p>
+  
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3"  style="color:blue"><u>a. Points positifs :</u></h5>
+                </div>
+                
+                <p class="">{{form_row(form.IV1apositif)}}</p>
+                
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3" style="color:orange"><u>b. Points perfectibles :</u></h5>
+                </div>
+
+                <p class="">{{form_row(form.IV1bperfectible)}}</p>
+                
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3" style="color:green"><u>c. Points d'amélioration :</u></h5>
+                </div>
+                
+                <p class="">{{form_row(form.IV1camelioration)}}</p>
+                
+  <div class="row">
+        <div class="col-1"></div>
+        <div class="col-3"><h4 class " "><strong><u>2 . Matériel</u></strong> </h4></div>
+   </div>    
+       
+       <p class="">{{form_row(form.IV2materiel)}}</p>
+  
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3"  style="color:blue"><u>a. Points positifs :</u></h5>
+                </div>
+                
+                <p class="">{{form_row(form.IV2apositif)}}</p>
+                              
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="mt-3" style="color:orange"><u>b. Points perfectibles :</u></h5>
+                </div>
+                
+                <p class="">{{form_row(form.IV2bperfectible)}}</p>
+                
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3" style="color:green"><u>c. Points d'amélioration :</u></h5>
+                </div>
+                
+                <p class="">{{form_row(form.IV2camelioration)}}</p>
+                
+
+
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-3"><h4 class " "><strong><u>3 . Technique</u></strong> </h4></div>
+</div>    
+       <p class="">{{form_row(form.IV3technique)}} </p>
+  
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3"  style="color:blue"><u>a. Points positifs :</u></h5>
+                </div>
+                
+                <p class="">{{form_row(form.IV3apositif)}}</p>
+                
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3" style="color:orange"><u>b. Points perfectibles :</u></h5>
+                </div>
+                
+                <p class="">{{form_row(form.IV3bperfectible)}}</p>
+                
+
+                <div class="row">
+                <div class="col-2"></div>
+                <h5 class="row mt-3" style="color:green"><u>c. Points d'amélioration :</u></h5>
+                </div>
+                <p class="">{{form_row(form.IV3camelioration)}}</p>
+                
+</div>
+
+
+<button type="button" class="accordion">V - CONCLUSION</button>
+        <div class="panel">
+                <p class="">{{form_row(form.conclusion)}}  </p>
+        </div>
+
+
+        <div class="row mt-3">
+        <div class="col-9" style="align:right">
+        
+        <button type="submit" class="btn btn-primary">modifiez</button>
+        </div>        
+        </div>
+
+        {{ form_end (form) }}
+</div>
+
+        
+
+        
+
+
+{% endblock %}
+{% block javascripts %}
+<script src="/js/retex.js"></script>
+{% endblock %}
+
+
+

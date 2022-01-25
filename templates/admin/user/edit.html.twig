@@ -1,0 +1,55 @@
+{% extends "admin/base.html.twig" %}
+
+{% block title %}Gestion Utilisateurs{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/css/select2.min.css">
+{% endblock %}
+
+
+{% block body %}
+
+<div class="container-fluid" align = "left" width= "50%">
+    <div class="card bg-light">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="fas fa-user-edit">Gérer votre utilisateur</i>
+                </h3>
+            </div>
+            <div class="card-body">
+                 {{form_start (form) }}
+
+                    <div class="edition_utilisateurs">
+                        {{ form_errors(form) }}
+                    </div>
+                    
+                    {{ form_row(form.firstName) }}
+                    {{ form_row(form.lastName) }}
+                    {{ form_row(form.email) }}
+                    {{ form_row(form.description) }}
+                    {{ form_row(form.userRoles) }}
+
+
+                    <div class="row mt-3">
+                        <div class="col-9" style="align:right">
+                            <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-lock-open"> modifiez</i>                
+                            </button>
+                        </div>        
+                    </div>
+
+                   {{ form_end(form) }}                                     
+            </div>
+    </div>
+
+        </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+<script src=https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.12/js/select2.min.js>    </script>
+<script>
+    $('select').select2();
+</script>
+{% endblock %}

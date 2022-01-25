@@ -1,0 +1,84 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Administration des retex{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <h1 class="my-5">Gestion des Utilisateurs</h1>
+
+            <div class="row">
+                <p class="">
+                    <span> 
+                        <button class="btn-primary"> 
+                            nombre d'utilisateurs : {{ user.getTotalItemCount }}
+                        </button>
+                    </span> 
+                </p>
+            </div>
+      
+            <table class="table table-hover" id="dtMaterialDesignExample">
+                <thead>
+                   <th>{{ knp_pagination_sortable(user, 'Nom de famille', 'u.lastName') }}</th>
+                   <th class="text-left">{{ knp_pagination_sortable(user, 'Prénom', 'u.firstName') }}</th>
+                   <th class="text-center">{{ knp_pagination_sortable(user, 'Email', 'u.email') }}</th>
+                   <th class="text-center">Avatar</th>
+                   <th class="text-center">Role</th>
+                   <th class="text-center">Action</th> 
+                </thead>
+                
+                <tbody>
+                    {% for user in user %}    
+                <tr>
+                    
+                    <td>{{user.lastName}}</td>
+                    <td>{{user.firstName}}</td>
+                    <td class="text-center">{{user.email}}</td>
+                    
+                    {% if not user.Filename %}
+                        
+                    <td class="text-center"> <button class="btn-secundary"><i class="fas fa-user-tie"> </i></button></td>
+                         
+                          {% else %}
+                         
+                         <td class="text-center"> 
+                         <img src="{{  asset('images/users/' ~ user.Filename) }}" 
+                         class= "avatar avatar-medium"
+                         alt=" Avatar de {{user.fullname}} " class="src"> </h6></td>
+                                
+                    {% endif %}
+                    
+                  
+                    {% if user.userRoles is not null %}
+                        <td align="center" valign="top">
+                            {% for role in user.userRoles %}
+                                  {{role.title}}<br />   
+                            {% else %}
+                                ROLE_USER  
+                            {% endfor %} 
+                        </td> 
+                    {% endif %}
+                    
+
+                    <td class="text-center">
+                        <a href="{{path ('admin_user_edit', {'id': user.id} )}}" class="btn btn-primary" onMouseOver="displayDivInfo('Modifier ROLE');" onMouseOut="displayDivInfo()"><i class="fab fa-critical-role"></i></a>
+                      
+                        <a href="#" class="btn btn-warning" onMouseOver="displayDivInfo('Réinitialiser mot de passe');" onMouseOut="displayDivInfo()"><i class="fas fa-key"></i></a>
+                        <a href="{{path ('admin_user_delete', {'id': user.id} )}}" class="btn btn-danger" onMouseOver="displayDivInfo('suppression');" onMouseOut="displayDivInfo()" onclick="return confirm(`Etes vous sûr de vouloir supprimez cet utilisateur ???`)"><i class="fas fa-trash"></i></a>
+                       
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table> 
+
+        {# display navigation #}
+            <div>
+              <ul class="pagination pagination-sm">
+                {{ knp_pagination_render(user) }}
+            </div>          
+
+    </div>
+{% endblock %}
+{% block javascripts %}
+<script src="/js/infos.js"></script>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Retex en ligne!{% endblock %}
+
+{% block body %}
+
+  <div class="row">
+            <div class="col">
+                <h1 class=""></h1>
+            </div>
+            </div>
+            <div class="row">
+            <div class="col">
+                <h1 class=""></h1>
+            </div>
+            </div>
+<div class="container">
+               <div class="row mt-12">
+                      
+                      
+             <img src="{{asset ('/logo/insigne41.jpg')}}" style="float:left;width:130px;height:90px;" classe="my-4" />
+                       
+                      
+                      
+                      
+                      
+                      <div class="col-9">
+                      <h1 class= "h1 my-4"><strong><upper>41<sup>e</sup> REGIMENT DE TRANSMISSIONS</upper></strong></h1>
+                      </div>
+               </div>
+            </div>
+
+<div class="container">
+    <div class="jumbotron mt-1">
+        <h1 class="display-3">Bienvenue sur Retex en Ligne !</h1>
+        <p class="lead">Nous mettons à disposition les expériences de chacun et partageons la connaissance</p>
+        <hr class="my-4">
+        <p>Vous recherchez une information partilculiere ?</p>
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href= {{path ('recherche')}} role="button">Recherchez ! </a>
+        </p>
+    </div>
+
+    <h2 class="h1 my-5">Les dernières publications</h2>
+          
+    
+    <div class="row">
+    
+        {% for retex in retex %}
+            <div class="col-md-4">
+                    <div class="card text-white bg-success mb-3">
+                        <div class="card-header text-center">
+                        
+                            {% if app.user %}
+                            <a href={{ path ('retex_show', {'slug':retex.slug})}} {{retex.titre}} style="color: #fdfefe;">{{retex.titre}}</a>
+                            {% else %}
+                            <a href= {{path ('account_login')}} style="color: #fdfefe;">{{retex.titre}}</a>
+                            {% endif %}
+                         
+                    </div>
+                        
+                        <div class="card-body">
+                            <h4 class="card-title">
+                                {{retex.objet}}
+                            </h4>
+                            <p class="card-text">
+                            publié le : {{retex.createdAt | date("d-m-Y")}}
+                        
+                            </p>
+                            
+                        </div>
+                    </div>
+            </div>
+            {% endfor %}
+    
+    </div>
+
+    <h2 class="h1 my-5">Contactez nos rédacteurs principaux</h2>
+    
+    <div class="row">
+        {% for data in user %}
+            
+       
+        <div class="col-md-4">
+            <div class="card border-secondary mb-3">
+                <div class="card-body">
+                    <h4 class="card-title">{{data.user.fullName}}</h4>
+
+                    <hr>
+
+                    <div class="card-text">
+                        <img src="{{  asset('images/users/' ~ data.user.Filename) }}" 
+                         class= "avatar avatar-medium"
+                         alt=" Avatar de {{data.user.fullname}} " class="src">
+                        <p>{{data.user.description}}</p>
+                         {% if app.user %}
+                        <a href= {{path ('user_show' , {'slug' : data.user.slug})}} class="btn btn-success float-right" onMouseOver="displayDivInfo('voir les publications');" onMouseOut="displayDivInfo()">En savoir plus!</a>
+                        {% else %}
+                        <a href= {{path ('account_login')}} class="btn btn-success float-right">En savoir plus!</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+         {% endfor %}
+        
+       
+        
+    </div>
+</div>                
+    
+
+{% endblock %}

@@ -1,0 +1,102 @@
+.accordion {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    transition: 0.4s;
+  }
+  
+  .active, .accordion:hover {
+    background-color: #ccc; 
+  }
+  
+  .panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+    margin-top: 30px;
+    
+  }
+  .h4 {
+    display: block;
+    font-size: 1em;
+    margin-top: 1.33em;
+    margin-bottom: 1.33em;
+    margin-left: 30px;
+    margin-right: 0;
+    font-weight: bold;
+  }
+  .myDiv {
+    border: 5px outset blue;
+    background-color: yellow;    
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .textes {
+    text-align : justify;
+    text-justify: inter-word;
+  }
+
+  .avatar {
+      max-width : 128px;
+      max-height: 128px;
+      border-radius : 50%;
+  }
+
+  .avatar-medium {
+    max-width : 64px;
+    max-height: 64px;
+   
+}
+  .avatar-mini {
+    max-width : 24px;
+    max-height: 24px;
+}
+    .avatar-micro {
+    max-width : 24px;
+    max-height: 24px;
+   
+}
+
+div.container , div.container-fluid {
+  margin-top: 30px;
+
+}
+
+label,
+footer {
+    font-family: sans-serif;
+}
+
+label {
+    font-size: 1rem;
+    padding-right: 10px;
+}
+
+select {
+    font-size: .9rem;
+    padding: 2px 5px;
+}
+
+  .paragraphe{
+    margin-left: 50px;
+    border: 1px solid black;
+}
+
+  .manage{
+    display : flex;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  .card{
+    margin-top: 20%;
+}

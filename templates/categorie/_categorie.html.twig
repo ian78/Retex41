@@ -1,0 +1,72 @@
+
+<div class="row">
+    <p class=""><span> <button class="btn-primary"> nombre d'articles : {{ retex.getTotalItemCount }}
+         </button></span> 
+    </p>
+</div>
+<table class="table table-hover">
+
+                <thead>
+                   
+                   <th class="text-left">Avatar</th>
+                   <th>Rédacteurs</th>
+                   <th>{{ knp_pagination_sortable(retex, 'Titre', 'r.titre') }}</th>
+                   <th >{{ knp_pagination_sortable(retex, 'Objet', 'r.objet') }}</th>
+                   <th  <th>{{ knp_pagination_sortable(retex, 'Date de publication', 'r.created_at') }}</th></th>
+                   <th class="text-center">Ouvrir</th>
+                                          
+                </thead>
+                <tbody>
+                    {% for retex in retex %}    
+                <tr>
+                    
+
+                    <td class="text-left">
+                        {% if not retex.author.Filename %}
+                          <button class="btn-secundary"><i class="fas fa-user-tie"> </i></button>
+                          {% else %}
+                          <img src="{{  asset('images/users/' ~ retex.author.Filename) }}" class= "avatar avatar-medium"alt=" Avatar de {{retex.author.fullname}} " class="src"> </h6>
+                                
+                          {% endif %}
+                    </td>
+
+                    <td class="text-left">{{retex.author.fullname}}</td>
+
+                    <td>{{retex.titre}}</td>
+
+                    <td class="text-left">{{retex.objet}}</td>
+               
+                    <td class="text-left">{{retex.createdAt | date("d-m-Y")}}</td>
+                                      
+                    <td class="text-center">
+                        <a href={{ path ('retex_show_final', {'slug':retex.slug})}} {{retex.titre}}
+                                class="btn btn-primary" onMouseOver="displayDivInfo('Editer');" 
+                                onMouseOut="displayDivInfo()" ><i class="fas fa-edit"></i></a>
+                    </td> 
+                  
+                </tr>
+                  
+                    
+                    {% endfor %}
+                </tbody>
+
+                             
+            </table>
+               {# display navigation #}
+                                <div class="container-fluid">
+                                    <div class="row-fluid">
+                                        <div class="centering text-center">
+                                                
+                                                <div>
+                                                <ul class="pagination pagination-sm">
+                                                {{ knp_pagination_render(retex) }}
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                                  
+
+
+
+
+  
